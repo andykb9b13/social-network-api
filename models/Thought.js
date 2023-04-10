@@ -8,6 +8,7 @@ const reactionSchema = new Schema({
   reactionBody: {
     type: String,
     required: true,
+    minLength: 1,
     maxlength: 280,
   },
   username: {
@@ -36,6 +37,10 @@ const thoughtSchema = new Schema(
     username: {
       type: String,
       required: true,
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
     reactions: [reactionSchema],
   },

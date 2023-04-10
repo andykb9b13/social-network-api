@@ -56,9 +56,9 @@ module.exports = {
         res.status(404).json({ message: "Thought not found" });
         return;
       }
-      await User.findByIdAndUpdate(thought.userId, {
-        $pull: { thoughts: thought._id },
-      });
+      //   await User.findByIdAndUpdate(thought.userId, {
+      //     $pull: { thoughts: thought._id },
+      //   });
       res.status(200).json({ message: "Thought deleted" });
     } catch (err) {
       console.error(err);
