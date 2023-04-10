@@ -1,5 +1,27 @@
 const { Schema, model } = require("mongoose");
 
+const reactionSchema = new Schema({
+  reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new mongoose.Types.ObjectId(),
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    minLength: 1,
+    maxlength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    // get: (createdAtVal) => dateFormat(createdAtVal),
+  },
+});
+
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -10,13 +32,17 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
+      // get: (createdAtVal) => dateFormat(createdAtVal),
     },
     username: {
       type: String,
       required: true,
     },
-    reactions: [],
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -29,27 +55,6 @@ const thoughtSchema = new Schema(
 
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
-});
-
-const reactionSchema = new Schema({
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new mongoose.Types.ObjectId(),
-  },
-  reactionBody: {
-    type: String,
-    required: true,
-    maxlength: 280,
-  },
-  username: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAtVal) => dateFormat(createdAtVal),
-  },
 });
 
 // create date format function
