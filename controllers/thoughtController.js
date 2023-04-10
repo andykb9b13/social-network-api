@@ -87,9 +87,10 @@ module.exports = {
   },
   async deleteReaction(req, res) {
     try {
+      const reactionId = req.body.reactionId;
       const updatedThought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { _id: reactionId } } }
+        { $pull: { reactions: { reactionId } } }
       );
       res.status(200).json(updatedThought);
     } catch (err) {
