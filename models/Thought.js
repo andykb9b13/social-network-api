@@ -40,7 +40,7 @@ const thoughtSchema = new Schema(
     },
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "user",
     },
     reactions: [reactionSchema],
   },

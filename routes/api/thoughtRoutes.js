@@ -5,6 +5,7 @@ const {
   createThought,
   updateThought,
   deleteThought,
+  createReaction,
 } = require("../../controllers/thoughtController");
 
 // GET all thoughts
@@ -19,6 +20,9 @@ router
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
+
+// POST a reaction to a thought's reactions array
+router.route("/:thoughtId/reactions").post(createReaction);
 
 // DELETE route to remove a thought by its _id
 // router.delete("/thoughts/:id", async (req, res) => {
@@ -36,23 +40,6 @@ router
 //     // remove all reactions associated with the thought
 //     await Reaction.deleteMany({ _id: { $in: deletedThought.reactions } });
 //     res.json(deletedThought);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// POST a reaction to a thought's reactions array
-// router.post("/:thoughtId/reactions", async (req, res) => {
-//   try {
-//     const reaction = await Reaction.create(req.body);
-
-//     const updatedThought = await Thought.findOneAndUpdate(
-//       { _id: req.params.thoughtId },
-//       { $addToSet: { reactions: reaction._id } },
-//       { new: true }
-//     );
-
-//     res.status(200).json(updatedThought);
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }
