@@ -6,6 +6,7 @@ const {
   updateThought,
   deleteThought,
   createReaction,
+  deleteReaction,
 } = require("../../controllers/thoughtController");
 
 // GET all thoughts
@@ -22,7 +23,10 @@ router
   .delete(deleteThought);
 
 // POST a reaction to a thought's reactions array
-router.route("/:thoughtId/reactions").post(createReaction);
+router
+  .route("/:thoughtId/reactions")
+  .post(createReaction)
+  .delete(deleteReaction);
 
 // DELETE route to remove a thought by its _id
 // router.delete("/thoughts/:id", async (req, res) => {

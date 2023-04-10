@@ -85,4 +85,16 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  async deleteReaction(req, res) {
+    try {
+      const updatedThought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: { _id: reactionId } } }
+      );
+      res.status(200).json(updatedThought);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  },
 };
