@@ -10,11 +10,12 @@ This application is the backend of a social networking site. Users can be create
 
 1. [Installing Dependencies](#installing-dependencies)
 2. [Usage](#usage)
-3. [Contributing](#contributing)
-4. [Testing](#testing)
-5. [Reporting Errors](#reporting-errors)
-6. [License](#license)
-7. [Questions](#questions)
+3. [Tutorial](#tutorial)
+4. [Contributing](#contributing)
+5. [Testing](#testing)
+6. [Reporting Errors](#reporting-errors)
+7. [License](#license)
+8. [Questions](#questions)
 
 ## Installing Dependencies
 
@@ -38,9 +39,11 @@ There is no front-end user interface so routes must be called using Postman, Ins
 
 ![Insomnia Demo](/assets/Insomnia-demo.png)
 
-For a demonstration of the application's usage, please view the following tutoral.
+## Tutorial
 
 [Video Tutorial](https://drive.google.com/file/d/1GZhjID5OWdfR5cE6jP7Udh-Kr2gCMK9g/view)
+
+For a demonstration of the application's usage, please view the following tutoral.
 
 ## Contributing
 
