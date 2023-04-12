@@ -86,15 +86,19 @@ module.exports = {
   },
   async deleteReaction(req, res) {
     try {
-      const reactionId = req.body.reactionId;
-      console.log(reactionId);
+      const { thoughtId, reactionId } = req.params;
       const updatedThought = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId },
-        { $pull: { reactions: { reactionId } } }
+        { _id: thoughtId },
+        { $pull: { reactions: { reactionId } } },
+        { new: true }
       );
+      if (!updatedThought) {
+        return res
+          .status(404)
+          .json({ message: "No thought found with this id!" });
+      }
       res.status(200).json(updatedThought);
     } catch (err) {
-      console.error(err);
       res.status(500).json(err);
     }
   },

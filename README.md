@@ -38,6 +38,10 @@ There is no front-end user interface so routes must be called using Postman, Ins
 
 ![Insomnia Demo](/assets/Insomnia-demo.png)
 
+For a demonstration of the application's usage, please view the following tutoral.
+
+[Video Tutorial](https://drive.google.com/file/d/1GZhjID5OWdfR5cE6jP7Udh-Kr2gCMK9g/view)
+
 ## Contributing
 
 Please feel free to contribute a front-end to this application
